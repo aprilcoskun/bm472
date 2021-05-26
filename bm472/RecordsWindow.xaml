@@ -9,16 +9,15 @@
         TextElement.FontSize="14"
         FontFamily="{materialDesign:MaterialDesignFont}"
         Background="{DynamicResource MaterialDesignPaper}"
-        xmlns:local="clr-namespace:bm472"
         mc:Ignorable="d"
         Title="Port Sniffer" Height="460" Width="1000">
     <Grid>
-        <TextBox x:Name="searchPortTextBox" HorizontalAlignment="Left" Margin="681,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" ToolTip="Port" materialDesign:HintAssist.Hint="Destination Port" Height="32"/>
-        <Button x:Name="searchButton" Content="Search By Port" Margin="822,12,29,0" VerticalAlignment="Top" Click="searchButton_Click" />
+        <TextBox x:Name="searchByPortTextBox" HorizontalAlignment="Left" Margin="681,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" ToolTip="Port" materialDesign:HintAssist.Hint="Destination Port" Height="32"/>
+        <Button x:Name="searchByPortButton" Content="Search By Port" Margin="827,12,24,0" VerticalAlignment="Top" Click="searchButton_Click" />
         <DataGrid x:Name="searchPacketDataGrid" Margin="0,52,0,0" IsReadOnly="True"/>
         <DatePicker HorizontalAlignment="Left" Margin="47,16,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="searchSourceTextBox" HorizontalAlignment="Left" Margin="310,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="32" materialDesign:HintAssist.Hint="Source IP"/>
-        <Button x:Name="searchSourceButton" Content="Search By Source" HorizontalAlignment="Left" Margin="478,12,0,0" VerticalAlignment="Top" Width="150" Click="searchSourceButton_Click"/>
+        <TextBox x:Name="searchBySourceTextBox" HorizontalAlignment="Left" Margin="310,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="32" materialDesign:HintAssist.Hint="Source IP"/>
+        <Button x:Name="searchBySourceButton" Content="Search By Source" HorizontalAlignment="Left" Margin="478,12,0,0" VerticalAlignment="Top" Width="150" Click="searchSourceButton_Click"/>
 
     </Grid>
 </Window>

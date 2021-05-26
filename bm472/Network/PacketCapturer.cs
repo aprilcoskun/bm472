@@ -59,6 +59,7 @@ namespace bm472.Network
                     {
                         communicator.Break();
                         Trace.WriteLine("Stopped listening Device: " + SelectedDevice.Description + " on PORT: " + port);
+                        return;
                     }
 
                     // get packet data

@@ -36,7 +36,7 @@ namespace bm472
 
         private void searchButton_Click(object sender, RoutedEventArgs e)
         {
-            var packetsQuery = database.GetPacketsByDestPort(searchPortTextBox.Text);
+            var packetsQuery = database.GetPacketsByDestPort(searchByPortTextBox.Text);
             packetsQuery.Wait();
             searchPacketDataGrid.ItemsSource = packetsQuery.Result;
             searchPacketDataGrid.Items.Refresh();
@@ -44,7 +44,7 @@ namespace bm472
 
         private void searchSourceButton_Click(object sender, RoutedEventArgs e)
         {
-            var packetsQuery = database.GetPacketsBySource(searchSourceTextBox.Text);
+            var packetsQuery = database.GetPacketsBySource(searchBySourceTextBox.Text);
             packetsQuery.Wait();
             searchPacketDataGrid.ItemsSource = packetsQuery.Result;
             searchPacketDataGrid.Items.Refresh();

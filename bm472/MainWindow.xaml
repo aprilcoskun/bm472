@@ -9,7 +9,6 @@
         TextElement.FontSize="14"
         FontFamily="{materialDesign:MaterialDesignFont}"
         Background="{DynamicResource MaterialDesignPaper}"
-        xmlns:local="clr-namespace:bm472"
         mc:Ignorable="d"
         Title="Port Sniffer" Height="460" Width="1000">
     <Grid>
