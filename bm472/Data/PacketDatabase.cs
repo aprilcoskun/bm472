@@ -17,23 +17,22 @@ namespace bm472.Data
 
         public Task<List<PacketModel>> GetAllPackets()
         {
-            //Get all packets.
-            return database.Table<PacketModel>().ToListAsync();
+            return database.Table<PacketModel>().OrderByDescending(i => i.Timestamp).ToListAsync();
         }
 
         public Task<List<PacketModel>> GetPacketsBySource(string source)
         {
-            return database.Table<PacketModel>().Where(i => i.Source.Contains(source)).ToListAsync();
+            return database.Table<PacketModel>().Where(i => i.Source.Contains(source)).OrderByDescending(i => i.Timestamp).ToListAsync();
         }
 
         public Task<List<PacketModel>> GetPacketsByDestPort(string port)
         {
-            return database.Table<PacketModel>().Where(i => i.DestPort.Contains(port)).ToListAsync();
+            return database.Table<PacketModel>().Where(i => i.DestPort.Contains(port)).OrderByDescending(i => i.Timestamp).ToListAsync();
         }
 
         public Task<List<PacketModel>> GetPacketsByTimeRange(DateTime startDate, DateTime endDate)
         {
-            return database.Table<PacketModel>().Where(i => startDate >= i.Timestamp && endDate <= i.Timestamp).ToListAsync();
+            return database.Table<PacketModel>().Where(i => startDate >= i.Timestamp && endDate <= i.Timestamp).OrderByDescending(i => i.Timestamp).ToListAsync();
         }
 
         public Task<int> SavePacketAsync(PacketModel packet)
