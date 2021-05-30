@@ -13,10 +13,10 @@
         Title="Port Sniffer" Height="460" Width="1000">
     <Grid>
         <TextBox x:Name="portTextBox" HorizontalAlignment="Center" Margin="0,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" ToolTip="Port" materialDesign:HintAssist.Hint="Destination Port" Height="32"/>
-        <Button x:Name="startButton" Content="Start" Margin="580,12,300,0" VerticalAlignment="Top" Click="StartButton_Click" />
+        <Button x:Name="startButton" Content="Start" Margin="580,12,300,0" VerticalAlignment="Top" Click="StartButtonClick" />
         <DataGrid x:Name="packetDataGrid" Margin="0,52,0,0" IsReadOnly="True"/>
         <ComboBox x:Name="devicesComboBox" Margin="24,12,580,0" VerticalAlignment="Top" Height="32"/>
-        <Button x:Name="clearButton" Content="Clear" Margin="716,12,164,0" VerticalAlignment="Top" Click="ClearButton_Click"/>
-        <Button x:Name="recordsButton" Content="Records" Margin="856,12,24,0" VerticalAlignment="Top" Click="recordsButton_Click"/>
+        <Button x:Name="clearButton" Content="Clear" Margin="716,12,164,0" VerticalAlignment="Top" Click="ClearButtonClick"/>
+        <Button x:Name="recordsButton" Content="Records" Margin="856,12,24,0" VerticalAlignment="Top" Click="RecordsButtonClick"/>
     </Grid>
 </Window>

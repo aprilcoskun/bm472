@@ -12,12 +12,12 @@
         mc:Ignorable="d"
         Title="Port Sniffer" Height="460" Width="1000">
     <Grid>
-        <TextBox x:Name="searchByPortTextBox" HorizontalAlignment="Left" Margin="681,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" ToolTip="Port" materialDesign:HintAssist.Hint="Destination Port" Height="32"/>
-        <Button x:Name="searchByPortButton" Content="Search By Port" Margin="827,12,24,0" VerticalAlignment="Top" Click="searchButton_Click" />
-        <DataGrid x:Name="searchPacketDataGrid" Margin="0,52,0,0" IsReadOnly="True"/>
-        <DatePicker HorizontalAlignment="Left" Margin="47,16,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="searchBySourceTextBox" HorizontalAlignment="Left" Margin="310,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="32" materialDesign:HintAssist.Hint="Source IP"/>
-        <Button x:Name="searchBySourceButton" Content="Search By Source" HorizontalAlignment="Left" Margin="478,12,0,0" VerticalAlignment="Top" Width="150" Click="searchSourceButton_Click"/>
-
+        <TextBox x:Name="searchTextBox" HorizontalAlignment="Left" Margin="693,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" Height="32"/>
+        <Button x:Name="searchButton" Content="Search" Margin="846,12,24,0" VerticalAlignment="Top" Click="searchButtonClick" />
+        <DataGrid x:Name="searchPacketDataGrid" Margin="-3,57,3,14" IsReadOnly="True"/>
+        <DatePicker x:Name="startDatePicker" HorizontalAlignment="Left" Margin="32,17,0,0" VerticalAlignment="Top" materialDesign:HintAssist.Hint="Start Date" SelectedDateChanged="StartDateChanged"/>
+        <DatePicker x:Name="endDatePicker" HorizontalAlignment="Left" Margin="150,17,0,0" VerticalAlignment="Top" materialDesign:HintAssist.Hint="End Date"/>
+        <ComboBox x:Name="searchComboBox" HorizontalAlignment="Left" Margin="518,12,0,0" VerticalAlignment="Top" Width="140" Height="32"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="123,15,0,0" Text="-" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" LineStackingStrategy="MaxHeight"/>
     </Grid>
 </Window>

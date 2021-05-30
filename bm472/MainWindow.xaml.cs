@@ -32,7 +32,7 @@ namespace bm472
             packetDataGrid.ItemsSource = packets;
         }
 
-        private void StartButton_Click(object sender, RoutedEventArgs e)
+        private void StartButtonClick(object sender, RoutedEventArgs e)
         {
             if(startButton.Content.ToString() == "Start")
             {
@@ -56,7 +56,7 @@ namespace bm472
                     packets.Insert(0, JsonSerializer.DeserializeFromString<PacketModel>(args.UserState.ToString()));
 
                     // Show max 10000 packets on datagrid
-                    if (packets.Count > 10000)
+                    if (packets.Count >= 10000)
                     {
                         packets.RemoveAt(10000);
                     }
@@ -74,14 +74,14 @@ namespace bm472
             }
         }
 
-        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        private void ClearButtonClick(object sender, RoutedEventArgs e)
         {
             packets.Clear();
             // update datargid ui
             packetDataGrid.Items.Refresh();
         }
 
-        private void recordsButton_Click(object sender, RoutedEventArgs e)
+        private void RecordsButtonClick(object sender, RoutedEventArgs e)
         {
             RecordsWindow recordsWindow = new RecordsWindow();
             recordsWindow.Show();
