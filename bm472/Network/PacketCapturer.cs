@@ -13,17 +13,19 @@ namespace bm472.Network
 {
     class PacketCapturer
     {
+        // initialize database
         readonly PacketDatabase database = new PacketDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "packets.db"));
 
+        // run capturer on background worker otherwise it will block ui thread
         private BackgroundWorker worker = new BackgroundWorker();
 
         public static IList<LivePacketDevice> AllDevices { get; } = LivePacketDevice.AllLocalMachine;
-        public LivePacketDevice SelectedDevice { get; set; } = AllDevices[0];
 
         public void KillWorker()
         {
             if (worker.IsBusy)
             {
+                // this is a bit hardcore but sometimes just canceling would not release all resources used by worker
                 worker.CancelAsync();
                 worker.Dispose();
                 worker = null;
@@ -31,27 +33,35 @@ namespace bm472.Network
                 worker = new BackgroundWorker();
             }
         }
-        public void StartCapture(string deviceDescription, string port, ProgressChangedEventHandler callback)
+        public void StartCapture(string selectedDeviceString, string port, ProgressChangedEventHandler callback)
         {
+            // enable worker cancellation and progress report
             worker.WorkerSupportsCancellation = true;
             worker.WorkerReportsProgress = true;
+
+            // the code that will run in worker
             worker.DoWork += new DoWorkEventHandler((object o, DoWorkEventArgs e) =>
             {
                 BackgroundWorker bw = o as BackgroundWorker;
-                
+
+                // find selected device by device name & description
+                LivePacketDevice SelectedDevice = AllDevices[0];
                 foreach (var d in AllDevices)
                 {
-                    if (d.Description == deviceDescription)
+                    if (selectedDeviceString == $"{d.Description} ({d.Name})")
                     {
                         SelectedDevice = d;
                         break;
                     }
                 }
-                Trace.WriteLine("Listening Device: " +SelectedDevice.Description + " on PORT: "+ port);
                 PacketCommunicator communicator = SelectedDevice.Open(65536, PacketDeviceOpenAttributes.Promiscuous, 1000);
+
+                // apply port filter
                 BerkeleyPacketFilter filter = communicator.CreateFilter("dst port " + port);
                 communicator.SetFilter(filter);
 
+                // start listening device
+                Trace.WriteLine("Listening Device: " + SelectedDevice.Description + " on PORT: " + port);
                 communicator.ReceivePackets(0, packetData =>
                 {
                     // break communicator loop if background worker killed

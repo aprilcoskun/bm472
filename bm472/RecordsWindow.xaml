@@ -7,17 +7,22 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
-        FontFamily="{materialDesign:MaterialDesignFont}"
         Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{materialDesign:MaterialDesignFont}"
+        ResizeMode="CanMinimize"
+        Title="Port Sniffer"
         mc:Ignorable="d"
-        Title="Port Sniffer" Height="460" Width="1000">
+        Width="1000"
+        Height="460">
     <Grid>
         <TextBox x:Name="searchTextBox" HorizontalAlignment="Left" Margin="693,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" Height="32"/>
-        <Button x:Name="searchButton" Content="Search" Margin="846,12,24,0" VerticalAlignment="Top" Click="searchButtonClick" />
-        <DataGrid x:Name="searchPacketDataGrid" Margin="-3,57,3,14" IsReadOnly="True"/>
-        <DatePicker x:Name="startDatePicker" HorizontalAlignment="Left" Margin="32,17,0,0" VerticalAlignment="Top" materialDesign:HintAssist.Hint="Start Date" SelectedDateChanged="StartDateChanged"/>
-        <DatePicker x:Name="endDatePicker" HorizontalAlignment="Left" Margin="150,17,0,0" VerticalAlignment="Top" materialDesign:HintAssist.Hint="End Date"/>
         <ComboBox x:Name="searchComboBox" HorizontalAlignment="Left" Margin="518,12,0,0" VerticalAlignment="Top" Width="140" Height="32"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="123,15,0,0" Text="-" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" LineStackingStrategy="MaxHeight"/>
+        <Button x:Name="searchButton" Content="Search" Margin="846,12,24,0" VerticalAlignment="Top" Click="searchButtonClick"/>
+
+        <DatePicker x:Name="startDatePicker" HorizontalAlignment="Left" Margin="24,12,0,0" VerticalAlignment="Top" materialDesign:HintAssist.Hint="Start Date" SelectedDateChanged="StartDateChanged" Height="32" Width="90"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="126,12,0,0" Text="-" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" LineStackingStrategy="MaxHeight"/>
+        <DatePicker x:Name="endDatePicker" HorizontalAlignment="Left" Margin="142,12,0,0" VerticalAlignment="Top" materialDesign:HintAssist.Hint="End Date" Height="32" Width="90"/>
+
+        <DataGrid x:Name="searchPacketDataGrid" Margin="0,55,0,0" IsReadOnly="True"/>
     </Grid>
 </Window>

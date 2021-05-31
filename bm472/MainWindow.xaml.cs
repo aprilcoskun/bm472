@@ -22,9 +22,9 @@ namespace bm472
             InitializeComponent();
 
             // Initialize device combobox
-            foreach (var i in PacketCapturer.AllDevices)
+            foreach (var d in PacketCapturer.AllDevices)
             {
-                devicesComboBox.Items.Add(i.Description);
+                devicesComboBox.Items.Add($"{d.Description} ({d.Name})");
             }
             devicesComboBox.SelectedIndex = 0;
 
@@ -70,6 +70,7 @@ namespace bm472
             {
                 // kill background worker
                 packetCapturer.KillWorker();
+
                 startButton.Content = "Start";
             }
         }

@@ -1,7 +1,6 @@
 ﻿using SQLite;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace bm472.Data
@@ -16,6 +15,7 @@ namespace bm472.Data
             database.CreateTableAsync<PacketModel>().Wait();
         }
 
+        // Database queries for record window
         public Task<List<PacketModel>> GetAllPackets()
         {
             return database.Table<PacketModel>().OrderByDescending(i => i.Timestamp).ToListAsync();
