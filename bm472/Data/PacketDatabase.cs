@@ -37,9 +37,31 @@ namespace bm472.Data
             return database.Table<PacketModel>().Where(i => i.Source.Contains(source)).OrderByDescending(i => i.Timestamp).ToListAsync();
         }
 
+        public Task<List<PacketModel>> GetPacketsByDestAndTimeRange(string destination, DateTime startDate, DateTime endDate)
+        {
+            return database.Table<PacketModel>().Where(i => i.Destination.Contains(destination) && endDate >= i.Timestamp && startDate <= i.Timestamp)
+                .OrderByDescending(i => i.Timestamp).ToListAsync();
+        }
+
+        public Task<List<PacketModel>> GetPacketsByDest(string destination)
+        {
+            return database.Table<PacketModel>().Where(i => i.Destination.Contains(destination)).OrderByDescending(i => i.Timestamp).ToListAsync();
+        }
+
         public Task<List<PacketModel>> GetPacketsBySourceAndTimeRange(string source, DateTime startDate, DateTime endDate)
         {
             return database.Table<PacketModel>().Where(i => i.Source.Contains(source) && endDate >= i.Timestamp && startDate <= i.Timestamp)
+                .OrderByDescending(i => i.Timestamp).ToListAsync();
+        }
+
+        public Task<List<PacketModel>> GetPacketsBySrcPort(string port)
+        {
+            return database.Table<PacketModel>().Where(i => i.SrcPort.Contains(port)).OrderByDescending(i => i.Timestamp).ToListAsync();
+        }
+
+        public Task<List<PacketModel>> GetPacketsBySrcPortAndTimeRange(string port, DateTime startDate, DateTime endDate)
+        {
+            return database.Table<PacketModel>().Where(i => i.SrcPort.Contains(port) && endDate >= i.Timestamp && startDate <= i.Timestamp)
                 .OrderByDescending(i => i.Timestamp).ToListAsync();
         }
 

@@ -25,6 +25,8 @@ namespace bm472
 
             // initialize search type combobox
             searchComboBox.Items.Add("Source");
+            searchComboBox.Items.Add("Destination");
+            searchComboBox.Items.Add("Source Port");
             searchComboBox.Items.Add("Destination Port");
             searchComboBox.Items.Add("Protocol");
             searchComboBox.SelectedIndex = 0;
@@ -63,6 +65,12 @@ namespace bm472
                     case "Source":
                         packetsQuery = database.GetPacketsBySourceAndTimeRange(searchTextBox.Text, selectedStartDate.Value, selectedEndDate.Value);
                         break;
+                    case "Destination":
+                        packetsQuery = database.GetPacketsByDestAndTimeRange(searchTextBox.Text, selectedStartDate.Value, selectedEndDate.Value);
+                        break;
+                    case "Source Port":
+                        packetsQuery = database.GetPacketsBySrcPortAndTimeRange(searchTextBox.Text, selectedStartDate.Value, selectedEndDate.Value);
+                        break;
                     case "Destination Port":
                         packetsQuery = database.GetPacketsByDestPortAndTimeRange(searchTextBox.Text, selectedStartDate.Value, selectedEndDate.Value);
                         break;
@@ -80,6 +88,12 @@ namespace bm472
                 {
                     case "Source":
                         packetsQuery = database.GetPacketsBySource(searchTextBox.Text);
+                        break;
+                    case "Destination":
+                        packetsQuery = database.GetPacketsByDest(searchTextBox.Text);
+                        break;
+                    case "Source Port":
+                        packetsQuery = database.GetPacketsBySrcPort(searchTextBox.Text);
                         break;
                     case "Destination Port":
                         packetsQuery = database.GetPacketsByDestPort(searchTextBox.Text);
